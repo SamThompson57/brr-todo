@@ -4,7 +4,6 @@ import Task from './components/Task'
 import NewTask from './components/NewTask'
 import add from './assets/add.svg'
 import editIcon from './assets/edit.svg'
-import checkIcon from './assets/checked.svg'
 
 function App() {
   const [project, setProject] = useState("Your Project")
@@ -54,11 +53,11 @@ function App() {
       {
         editProject ?
         <div className='heading'>
-          <input type="text" value={project} onInput={e => setProject(e.target.value)}/> 
+          <input id="projectInput"type="text" value={project} onInput={e => setProject(e.target.value)}/> 
           <img className='smallLogo' src={editIcon} alt="commit Project Name" onClick={()=>{setEditProject(!editProject)}}/>
         </div>
         : 
-          <div className='heading'>
+          <div id='heading' className='heading'>
             <h1>{project}</h1>
             <img className='smallLogo' src={editIcon} alt="Edit Project Name" onClick={()=>{setEditProject(!editProject)}}/>
           </div>

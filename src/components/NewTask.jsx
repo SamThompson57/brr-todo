@@ -1,5 +1,6 @@
 import { useId, useState } from "react"
-import uniqueId from "uniqueid"
+import addIcon from '../assets/add.svg'
+import cancelIcon from '../assets/cancel.svg'
 
 const NewTask = (props) =>{
     const {addNewTask, collapse} = props
@@ -31,7 +32,7 @@ const NewTask = (props) =>{
                 <div>
                     <input type="time" value={time} onInput={e => setTime(e.target.value)}/>
                 </div>
-                <button onClick={() => {
+                <img src={addIcon} alt="Add New Task" onClick={() => {
                     title.length > 0 ?
                     addNewTask([{
                     "taskName":title,
@@ -41,9 +42,9 @@ const NewTask = (props) =>{
                     "completed": false,
                     "id": id
                         }]):remindUser()
-                    }}>Add New</button>      
+                    }}/>      
             </div>
-            <button onClick={collapse}>Cancel</button>
+            <img src={cancelIcon} alt="Cancel" onClick={collapse}/>
         </div>
         
     )

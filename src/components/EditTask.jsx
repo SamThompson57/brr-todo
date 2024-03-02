@@ -15,20 +15,15 @@ const EditTask = (props) => {
 
     return (
         <div>
-            <div>
-                <div>
-                    <input type="text" value={title} onInput={e => setTitle(e.target.value)}/>
-                </div>
-                <div>
-                    <input type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
-                </div>
+            <div className="editContainer">
+                <input type="text" value={title} onInput={e => setTitle(e.target.value)}/>
+                <img src={remove} alt={'Delete Task'} onClick={() => {removeTask(task.id)}}/>
+                <input className="editDescription" type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
                 <div>
                     <input type="date" value={date} onInput={e => setDate(e.target.value)}/>
-                </div>
-                <div>
                     <input type="time" value={time} onInput={e => setTime(e.target.value)}/>
                 </div>
-                <img src={remove} alt={'Delete Task'} onClick={() => {removeTask(task.id)}}/>
+                
                 <img src={edit} alt={'confirm changes'} onClick={() => {
                     /*Check the form is valid first*/
                     update({

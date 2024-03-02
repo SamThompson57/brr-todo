@@ -19,7 +19,7 @@ const Task = (props) => {
             "taskName":task.taskName,
             "taskDescription":task.taskDescription,
             "dueDate": task.dueDate,
-            "dieTime": task.dueTime,
+            "dueTime": task.dueTime,
             "completed": !task.completed,
             "id": task.id
         })
@@ -37,13 +37,21 @@ const Task = (props) => {
                 :
             
                 <div className="taskContainer">
-                    <h3>{task.taskName}</h3>
-                    <div>{task.taskDescription}</div>
-                    <div>{task.dueDate}</div>
-                    <div>{task.dueTime}</div>
-                    <img src={task.completed? checked : unchecked} onClick={toggleCheck}/>
+                    <h2 className="taskTitle">{task.taskName}</h2>
+                    <img className="checked" src={task.completed? checked : unchecked} onClick={toggleCheck}/>
+                    <div>
+                        <div className="taskInfo">{task.taskDescription}</div>
+                        <div className="dueContainer">
+                            <div>{task.dueTime || task.dueDate ?"Due:" :null }</div>
+                            <div>
+                                <div>{task.dueDate}</div>
+                                <div>{task.dueTime}</div>
+                            </div>
+                            
+                        </div>
+                    </div>
                     <div className="taskControls">
-                        <img src={editIcon} alt="edit task" onClick={()=>{setEditing(true)}}/>
+                        <img className="editTask" src={editIcon} alt="edit task" onClick={()=>{setEditing(true)}}/>
                     </div>
                 </div>
             }
