@@ -5,6 +5,7 @@ import NewTask from './components/NewTask'
 import add from './assets/add.svg'
 import editIcon from './assets/edit.svg'
 import introProject from './assets/sampleProjects.json'
+import storageAvailable from './components/checkStorage.js'
 
 function App() {
   const [project, setProject] = useState("")
@@ -16,8 +17,24 @@ function App() {
     setTaskForm(true)
   }
 
-  useEffect(()=>{
+  const fetchData = () => {
+    console.log(storageAvailable())
 
+    if(storageAvailable() === true){
+      console.log("storageAvailable")
+      if(!localStorage.getItem('projectInfo')){
+        localStorage.setItem('projectInfo', JSON.stringify(introProject))
+        return introProject
+      } return JSON.parse(localStorage.getItem('projectInfo'))
+    }
+    console.log("Storage unavailible")
+    return introProject
+  }
+
+  useEffect(()=>{
+    const data = fetchData()
+    setProject(data.projectName)
+    setTasks(data.tasks)
   },[])
 
   const deleteTask = (taskId) => {
@@ -28,6 +45,9 @@ function App() {
     const updatedList = tasks.toSpliced(changeIndex, 1)
 
     setTasks(updatedList)
+    if(storageAvailable){
+      localStorage.setItem('projectInfo', JSON.stringify({"projectName":project,"tasks":updatedList}))
+    }
   }
 
   const collapseTask = () => {
@@ -51,6 +71,16 @@ function App() {
     const updatedList = tasks.toSpliced(changeIndex, 1, changedTask)
 
     setTasks(updatedList)
+    if(storageAvailable){
+      localStorage.setItem('projectInfo', JSON.stringify({"projectName":project,"tasks":updatedList}))
+    }
+  }
+
+  const updateProjectTitle = () => {
+    setEditProject(!editProject)
+    if(storageAvailable){
+      localStorage.setItem('projectInfo', JSON.stringify({"projectName":project,"tasks":tasks}))
+    }
   }
 
   return (
@@ -59,7 +89,7 @@ function App() {
         editProject ?
         <div className='heading'>
           <input id="projectInput"type="text" value={project} onInput={e => setProject(e.target.value)}/> 
-          <img className='smallLogo' src={editIcon} alt="commit Project Name" onClick={()=>{setEditProject(!editProject)}}/>
+          <img className='smallLogo' src={editIcon} alt="commit Project Name" onClick={()=>{updateProjectTitle()}}/>
         </div>
         : 
           <div id='heading' className='heading'>
