@@ -12,20 +12,28 @@ const EditTask = (props) => {
     const [desc, setDesc] = useState(task.taskDescription) 
     const [date, setDate] = useState(task.dueDate)
     const [time, setTime] =useState(task.dueTime)
+    const [remind, setRemind] = useState(false)
+
+    const remindUser = () => {
+        setRemind(true)
+    }
 
     return (
         <div>
             <div className="editContainer">
-                <input type="text" value={title} onInput={e => setTitle(e.target.value)}/>
+                <div className="editTitle">
+                    <input className={remind?'remindUser':null} type="text" maxLength={25} value={title} onInput={e => setTitle(e.target.value)}/>
+                </div>
                 <img src={remove} alt={'Delete Task'} onClick={() => {removeTask(task.id)}}/>
-                <input className="editDescription" type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
+                <textarea className="editDescription" type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
                 <div>
                     <input type="date" value={date} onInput={e => setDate(e.target.value)}/>
                     <input type="time" value={time} onInput={e => setTime(e.target.value)}/>
                 </div>
                 
                 <img src={edit} alt={'confirm changes'} onClick={() => {
-                    /*Check the form is valid first*/
+                    title.length > 0 ?
+
                     update({
                     "taskName":title,
                     "taskDescription":desc,
@@ -33,9 +41,7 @@ const EditTask = (props) => {
                     "dueTime": time,
                     "completed": task.completed,
                     "id": task.id
-                        })
-                    
-                    toggle()
+                        }) + toggle():remindUser()
                     
                     }}></img>      
             </div>

@@ -1,19 +1,21 @@
 {
-    "projectName": "Sample Project",
+    "projectName": "Learn to use this app",
     "tasks": [
         {
-            "taskName":"Review ToDo App",
-            "taskDescription":"The First Sample Task, make sure you recieve a ToDo list from Sam Thompson by this date",
-            "dueDate": "2024-03-04T18:00",
-            "completed": true,
-            "id": 2
-        },
-        {
-            "taskName":"Give Feedback",
-            "taskDescription":"Send the feedback of this todo app to Sam",
-            "dueDate": "2024-03-11T18:00",
+            "taskName":"Change The Project name",
+            "taskDescription":"Use the edit button at the top of the page to change the project name",
+            "dueDate": "",
+            "dueTime": "",
             "completed": false,
             "id": 1
+        },
+        {
+            "taskName":"Add A New Task",
+            "taskDescription":"Use the add button at the bottom of the screen to add a new task to the project",
+            "dueDate": "",
+            "dueTime": "",
+            "completed": false,
+            "id": 2
         }
     ]
 }

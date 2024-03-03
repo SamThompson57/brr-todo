@@ -19,19 +19,16 @@ const NewTask = (props) =>{
 
     return(
         <div>
-            <div>
-                <div>
-                    <input className={remind?'remindUser':null} type="text" value={title} onInput={e => setTitle(e.target.value)}/>
+            <div className="editContainer">
+                <div className="editTitle">
+                    <input className={remind?'remindUser':null} maxLength={25} type="text" value={title} onInput={e => setTitle(e.target.value)}/>
                 </div>
-                <div>
-                    <input type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
-                </div>
+                <img src={cancelIcon} alt="Cancel" onClick={collapse}/>
+                <textarea className="editDescription" type="text" value={desc} onInput={e => setDesc(e.target.value)}/>
                 <div>
                     <input type="date" value={date} onInput={e => setDate(e.target.value)}/>
-                </div>
-                <div>
                     <input type="time" value={time} onInput={e => setTime(e.target.value)}/>
-                </div>
+                </div>                    
                 <img src={addIcon} alt="Add New Task" onClick={() => {
                     title.length > 0 ?
                     addNewTask([{
@@ -44,7 +41,7 @@ const NewTask = (props) =>{
                         }]):remindUser()
                     }}/>      
             </div>
-            <img src={cancelIcon} alt="Cancel" onClick={collapse}/>
+            
         </div>
         
     )

@@ -4,9 +4,10 @@ import Task from './components/Task'
 import NewTask from './components/NewTask'
 import add from './assets/add.svg'
 import editIcon from './assets/edit.svg'
+import introProject from './assets/sampleProjects.json'
 
 function App() {
-  const [project, setProject] = useState("Your Project")
+  const [project, setProject] = useState("")
   const [tasks, setTasks] = useState([])
   const [taskForm, setTaskForm] = useState(false)
   const [editProject, setEditProject] = useState(false)
@@ -14,6 +15,10 @@ function App() {
   const addTask = () => {
     setTaskForm(true)
   }
+
+  useEffect(()=>{
+
+  },[])
 
   const deleteTask = (taskId) => {
     const idMatch = (task) =>{
