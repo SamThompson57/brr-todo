@@ -3,7 +3,7 @@
     "tasks": [
         {
             "taskName":"Change The Project name",
-            "taskDescription":"Use the edit button at the top of the page to change the project name",
+            "taskDescription":"Use the edit button at the top of the page to change the project name, Press the Edit buton when you are done",
             "dueDate": "",
             "dueTime": "",
             "completed": false,
@@ -11,7 +11,7 @@
         },
         {
             "taskName":"Add A New Task",
-            "taskDescription":"Use the add button at the bottom of the screen to add a new task to the project",
+            "taskDescription":"Use the add button at the bottom of the screen to add a new task to the project, Name is Compulsory, Description an due infomration are not",
             "dueDate": "",
             "dueTime": "",
             "completed": false,
